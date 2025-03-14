@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptLens - Prompt Engineering Enhancement Tool</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-wand-magic-sparkles me-2"></i>Prompt<span>Lens</span></a>
+        </div>
+    </nav>
+    
+    <div class="main-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Model Selection & API Keys</span>
+                        <button class="btn btn-sm btn-outline-secondary" id="toggleApiSection">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="card-body" id="apiSection">
+                        <div class="model-selector mb-3">
+                            <div class="model-option active" data-model="openai">
+                                <i class="fas fa-robot me-2"></i>OpenAI GPT-4o
+                            </div>
+                            <div class="model-option" data-model="deepseek">
+                                <i class="fas fa-brain me-2"></i>DeepSeek
+                            </div>
+                        </div>
+                        
+                        <div id="openaiKeySection">
+                            <div class="mb-3">
+                                <label for="openaiApiKey" class="form-label">OpenAI API Key</label>
+                                <div class="api-key-input">
+                                    <input type="password" class="form-control" id="openaiApiKey" placeholder="sk-...">
+                                    <button class="toggle-visibility" data-target="openaiApiKey">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="form-text">Your API key is stored locally and never sent to our servers.</div>
+                            </div>
+                        </div>
+                        
+                        <div id="deepseekKeySection" style="display: none;">
+                            <div class="mb-3">
+                                <label for="deepseekApiKey" class="form-label">DeepSeek API Key</label>
+                                <div class="api-key-input">
+                                    <input type="password" class="form-control" id="deepseekApiKey" placeholder="Enter your DeepSeek API key">
+                                    <button class="toggle-visibility" data-target="deepseekApiKey">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="form-text">Your API key is stored locally and never sent to our servers.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-pen me-2"></i>Base Prompt
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <textarea class="form-control" id="basePrompt" rows="6" placeholder="Enter your base prompt here..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-sliders me-2"></i>Prompt Engineering Techniques
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="technique-chip" data-technique="chain-of-thought">Chain of Thought</div>
+                            <div class="technique-chip" data-technique="step-by-step">Step-by-Step Reasoning</div>
+                            <div class="technique-chip" data-technique="persona">Persona-Based</div>
+                            <div class="technique-chip" data-technique="examples">Few-Shot Examples</div>
+                            <div class="technique-chip" data-technique="constraints">Constraints & Parameters</div>
+                            <div class="technique-chip" data-technique="role-play">Role-Playing</div>
+                            <div class="technique-chip" data-technique="schema">Schema-Based</div>
+                            <div class="technique-chip" data-technique="template">Template-Driven</div>
+                            <div class="technique-chip" data-technique="structured-output">Structured Output</div>
+                            <div class="technique-chip" data-technique="zero-shot">Zero-Shot Learning</div>
+                            <div class="technique-chip" data-technique="creative">Creative Enhancement</div>
+                            <div class="technique-chip" data-technique="concise">Concise & Clear</div>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" id="generateBtn">
+                                <i class="fas fa-wand-magic-sparkles me-2"></i>Transform Prompt
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-lightbulb me-2"></i>Enhanced Prompt
+                        </div>
+                        <button class="btn btn-sm btn-outline-primary copy-btn" id="copyBtn">
+                            <i class="fas fa-copy me-1"></i>Copy
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="loader" id="loader"></div>
+                        <div class="alert alert-info" id="instructionAlert">
+                            <i class="fas fa-info-circle me-2"></i>Select a prompt engineering technique and click "Transform Prompt" to see the results here.
+                        </div>
+                        <div class="result-container" id="resultPrompt"></div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-info-circle me-2"></i>Technique Description
+                    </div>
+                    <div class="card-body">
+                        <div id="techniqueDescription">
+                            <p>Select a prompt engineering technique to see its description here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>PromptLens © 2025 | A powerful tool for enhancing your AI prompts</p>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
