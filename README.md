@@ -2,7 +2,7 @@
 
 ![PromptLens Logo](https://img.shields.io/badge/PromptLens-Prompt%20Engineering%20Tool-6c63ff?style=for-the-badge&logo=sparkles)
 
-PromptLens is a powerful web-based tool that helps you enhance your AI prompts using various proven prompt engineering techniques. With support for both OpenAI and DeepSeek language models, PromptLens transforms your basic prompts into optimized queries that generate better AI responses.
+PromptLens is a powerful web-based tool that helps you enhance your AI prompts using various proven prompt engineering techniques. With support for both DeepSeek and OpenAI language models, PromptLens transforms your basic prompts into optimized queries that generate better AI responses.
 
 ## 🌟 Features
 
@@ -42,7 +42,7 @@ PromptLens supports a wide range of prompt engineering techniques:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/promptlens.git
+   git clone https://github.com/Q-Aware-Labs/promptlens_web.git
    ```
 
 2. Open the `index.html` file in your browser.
@@ -90,10 +90,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 Email: antony.garcia@qawarelabs.com
 
-Project Link: [https://github.com/yourusername/promptlens](https://github.com/yourusername/promptlens)
+Project Link: [PromptLens_web](https://github.com/Q-Aware-Labs/promptlens_web)
 
 ## 🙏 Acknowledgements
 
+- [Anthropic](https://anthropic.com/) for the help on building this project with its porwerful model Claude 3.7 Sonnet
 - [OpenAI](https://openai.com/) for their powerful GPT models
 - [DeepSeek](https://deepseek.com/) for their AI capabilities
 - [Bootstrap](https://getbootstrap.com/) for the responsive UI framework
